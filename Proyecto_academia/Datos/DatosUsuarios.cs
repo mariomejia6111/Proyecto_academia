@@ -53,7 +53,7 @@ namespace Proyecto_academia.Datos
                 using (var conexion = new SqlConnection(cn.getCadenaSQL()))
                 {
                     conexion.Open();
-                    SqlCommand cmd = new SqlCommand("sp_Guardar", conexion);
+                    SqlCommand cmd = new SqlCommand("sp_Guardar1", conexion);
                     cmd.Parameters.AddWithValue("Correo", ousuarios.Correo);
                     cmd.Parameters.AddWithValue("NombreUsuario", ousuarios.Nombre_User);
                     cmd.Parameters.AddWithValue("Contra", ousuarios.Contra);
