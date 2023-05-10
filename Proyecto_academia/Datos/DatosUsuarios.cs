@@ -1,6 +1,8 @@
 ﻿using Proyecto_academia.Models;
 using System.Data.SqlClient;
 using System.Data;
+using System.Diagnostics.Contracts;
+
 namespace Proyecto_academia.Datos
 {
     public class DatosUsuarios
@@ -39,6 +41,35 @@ namespace Proyecto_academia.Datos
             }
 
             return oLista;
+        }
+
+        public Usuarios Obtener(int idUsuario)
+        {
+           var ousuarios = new Usuarios();
+            var cn = new Conexion();
+
+            using(var conexion = new SqlConnection(cn.getCadenaSQL()))
+            {
+                conexion.Open();
+                SqlCommand cmd = new SqlCommand("sp_Obtener", conexion);
+                cmd.Parameters.AddWithValue("IdUsuario", idUsuario);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                using (var dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        ousuarios.IdUsuario = Convert.ToInt32(dr["IdUsuario"]);
+                        ousuarios.Correo = dr["Correo"].ToString();
+                        ousuarios.Nombre_User = dr["NombreUsuario"].ToString();
+                        ousuarios.Contra = dr["Contra"].ToString();
+                        ousuarios.FechaCreacion = Convert.ToDateTime(dr["FechaCreacion"]);
+                    }
+                }
+                return ousuarios;
+            }
+           
+
         }
 
 
@@ -88,7 +119,7 @@ namespace Proyecto_academia.Datos
                 using (var conexion = new SqlConnection(cn.getCadenaSQL()))
                 {
                     conexion.Open();
-                    SqlCommand cmd = new SqlCommand("sp_Editar", conexion);
+                    SqlCommand cmd = new SqlCommand("sp_Editar1", conexion);
                     cmd.Parameters.AddWithValue("IdUsuario", ousuarios.IdUsuario);
                     cmd.Parameters.AddWithValue("Correo", ousuarios.Correo);
                     cmd.Parameters.AddWithValue("NombreUsuario", ousuarios.Nombre_User);

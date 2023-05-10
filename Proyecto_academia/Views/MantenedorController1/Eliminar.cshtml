@@ -1,0 +1,25 @@
+﻿@model Usuarios
+@{
+    ViewData["Title"] = "Eliminar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        Editar Usuario
+    </div>
+    <div class="card-body">
+        <form asp-action="Eliminar" asp-controller="MantenedorController1" method="post">
+
+            <input asp-for="IdUsuario" type="hidden" class="form-control">
+
+            <div class="alert alert-danger" role="alert">
+                ¿Desea elimnar el contacto : @Html.DisplayTextFor(m => m.Nombre_User) ?
+            </div>
+
+            <button type="submit" class="btn btn-danger">Eliminar</button>
+            <a asp-action="Listar" asp-controller="MantenedorController1" class="btn btn-warning">Volver ala lista </a>
+        </form>
+    </div>
+</div>
+

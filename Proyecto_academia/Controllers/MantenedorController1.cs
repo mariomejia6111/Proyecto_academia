@@ -25,12 +25,56 @@ namespace Proyecto_academia.Controllers
         public IActionResult Guardar(Usuarios ousuarios)
         {
             //recibe el objeto para guardarlo bd
+
+
+            if (!ModelState.IsValid)
+            return View();
+
             var respuesta = _UsuariosDatos.Guardar(ousuarios);
             if (respuesta)
                  return RedirectToAction("Listar");
             else
                 return View();
         }
+
+        public IActionResult Editar(int IdUsuario)
+        {
+            //metodo solo devuelve la vista
+            var Ousuario = _UsuariosDatos.Obtener(IdUsuario);
+            return View(Ousuario);
+        }
+
+        [HttpPost]
+        public IActionResult Editar(Usuarios ousuarios)
+        {
+            //metodo solo devuelve la vista
+            if (!ModelState.IsValid)
+                return View();
+
+            var respuesta = _UsuariosDatos.Editar(ousuarios);
+            if (respuesta)
+                return RedirectToAction("Listar");
+            else
+                return View();
+        }
+        public IActionResult Eliminar(int IdUsuario)
+        {
+            //metodo solo devuelve la vista
+            var Ousuario = _UsuariosDatos.Obtener(IdUsuario);
+            return View(Ousuario);
+        }
+
+        [HttpPost]
+        public IActionResult Eliminar(Usuarios ousuario)
+        {
+
+            var respuesta = _UsuariosDatos.Eliminar(ousuario.IdUsuario);
+            if (respuesta)
+                return RedirectToAction("Listar");
+            else
+                return View();
+        }
+
 
     }
 }
