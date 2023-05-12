@@ -1,16 +1,16 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Proyecto_academia.Datos;
-using Proyecto_academia.Models;
+using Entidades;
+using Logica;
 
 namespace Proyecto_academia.Controllers
 {
     public class MantenedorController1 : Controller
     {
-        DatosUsuarios _UsuariosDatos = new DatosUsuarios();
+        
         public IActionResult Listar()
         {
             //La vista mostrara una lista 
-            var oLista = _UsuariosDatos.Listar();
+            var oLista = LogicaUsuarios.Listar();
 
             return View(oLista);
         }
@@ -22,7 +22,7 @@ namespace Proyecto_academia.Controllers
         }
 
         [HttpPost]
-        public IActionResult Guardar(Usuarios ousuarios)
+        public IActionResult Guardar(Usuario ousuarios)
         {
             //recibe el objeto para guardarlo bd
 
@@ -30,7 +30,7 @@ namespace Proyecto_academia.Controllers
             if (!ModelState.IsValid)
             return View();
 
-            var respuesta = _UsuariosDatos.Guardar(ousuarios);
+            var respuesta = LogicaUsuarios.Guardar(ousuarios);
             if (respuesta)
                  return RedirectToAction("Listar");
             else
@@ -40,18 +40,18 @@ namespace Proyecto_academia.Controllers
         public IActionResult Editar(int IdUsuario)
         {
             //metodo solo devuelve la vista
-            var Ousuario = _UsuariosDatos.Obtener(IdUsuario);
+            var Ousuario = LogicaUsuarios.Obtener(IdUsuario);
             return View(Ousuario);
         }
 
         [HttpPost]
-        public IActionResult Editar(Usuarios ousuarios)
+        public IActionResult Editar(Usuario ousuarios)
         {
             //metodo solo devuelve la vista
             if (!ModelState.IsValid)
                 return View();
 
-            var respuesta = _UsuariosDatos.Editar(ousuarios);
+            var respuesta = LogicaUsuarios.Editar(ousuarios);
             if (respuesta)
                 return RedirectToAction("Listar");
             else
@@ -60,15 +60,15 @@ namespace Proyecto_academia.Controllers
         public IActionResult Eliminar(int IdUsuario)
         {
             //metodo solo devuelve la vista
-            var Ousuario = _UsuariosDatos.Obtener(IdUsuario);
+            var Ousuario = LogicaUsuarios.Obtener(IdUsuario);
             return View(Ousuario);
         }
 
         [HttpPost]
-        public IActionResult Eliminar(Usuarios ousuario)
+        public IActionResult Eliminar(Usuario ousuario)
         {
 
-            var respuesta = _UsuariosDatos.Eliminar(ousuario.IdUsuario);
+            var respuesta = LogicaUsuarios.Eliminar(ousuario.IdUsuario);
             if (respuesta)
                 return RedirectToAction("Listar");
             else

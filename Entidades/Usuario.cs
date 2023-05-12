@@ -1,19 +1,23 @@
-﻿using System.ComponentModel.DataAnnotations;
-namespace Proyecto_academia.Models
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Entidades
 {
-    public class Usuarios
+    public class Usuario
     {
         public int IdUsuario { get; set; }
 
-        [Required (ErrorMessage ="El Campo Correo Esta Vacio")]
+        [Required(ErrorMessage = "El Campo Correo Esta Vacio")]
         public string? Correo { get; set; }
         [Required(ErrorMessage = "El Campo Nombre De Usuario Esta Vacio")]
         public string? Nombre_User { get; set; }
         [Required(ErrorMessage = "El Campo Contaseña Esta Vacio")]
         public string? Contra { get; set; }
         [Required(ErrorMessage = "El Campo Fecha De Creacion Esta Vacio")]
-        public DateTime? FechaCreacion { get; set; }  
-        
-
+        public DateTime? FechaCreacion { get; set; }
     }
 }

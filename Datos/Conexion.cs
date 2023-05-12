@@ -1,6 +1,7 @@
-﻿using System.Data.SqlClient;
+﻿using Microsoft.Extensions.Configuration;
+using System.Data.SqlClient;
 
-namespace Proyecto_academia.Datos
+namespace Datos
 {
     public class Conexion
     {
