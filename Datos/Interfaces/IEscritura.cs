@@ -14,5 +14,7 @@ namespace Datos.Interfaces
         public bool Editar(T entidad);
 
         public bool Eliminar(int id);
+
+        //public bool CambiarContra(T entidad);
     }
 }

@@ -13,5 +13,7 @@ namespace Datos.Interfaces
 
         public T Obtener(int id);
 
+        
+
     }
 }

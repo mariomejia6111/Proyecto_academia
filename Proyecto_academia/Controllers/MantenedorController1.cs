@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Entidades;
 using Logica;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Identity;
 
 namespace Proyecto_academia.Controllers
 {
@@ -78,6 +81,7 @@ namespace Proyecto_academia.Controllers
         public IActionResult Login() {
             return View();
         }
+
         [HttpPost]
         public IActionResult Login(Credencial c) {
             bool r;
@@ -92,5 +96,32 @@ namespace Proyecto_academia.Controllers
             return View();
         }
         // Fin -- Inicio de Sesión
+
+        //inicio -- cerrar sesion
+
+      public IActionResult Logout()
+        {
+            return RedirectToAction("Login");
+        }
+
+        public IActionResult CambiarContra()
+        {
+            return View();
+        }
+        //fin--cerrar sesion
+
+
+        
+
+        //[HttpPost]
+        //public IActionResult CambiarContra(Usuario usuario)
+        //{
+
+        //    LogicaUsuarios.CambiarContra(usuario.IdUsuario, usuario.Correo, usuario.Contra);
+           
+        //        return RedirectToAction("Login");
+            
+        //}
+
     }
 }

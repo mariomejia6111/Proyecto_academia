@@ -23,5 +23,8 @@ namespace Logica
 
         public static bool Eliminar(int id) => _UsuariosDatos.Eliminar(id);
         public static bool VerificarLogin(Credencial c) => _UsuariosDatos.VerificarLogin(c);
+
+        //public static bool  CambiarContra(Usuario IdUsuario, Usuario Correo, Usuario Contra ) => _UsuariosDatos.CambiarContra(IdUsuario,Correo,Contra);
+
     }
 }

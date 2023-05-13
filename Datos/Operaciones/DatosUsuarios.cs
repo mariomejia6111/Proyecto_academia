@@ -165,22 +165,60 @@ namespace Datos.Operaciones
                 return ousuarios;
             }
         }
-        public bool VerificarLogin(Credencial c) {
+        public bool VerificarLogin(Credencial c)
+        {
             bool r;
-            try {
+            try
+            {
                 var cn = new Conexion();
-                using (var conexion = new SqlConnection(cn.getCadenaSQL())) {
+                using (var conexion = new SqlConnection(cn.getCadenaSQL()))
+                {
                     conexion.Open();
                     SqlCommand cmd = new SqlCommand("SELECT dbo.CheckLogin(@a, @b);", conexion);
-                    cmd.Parameters.AddWithValue("@a", c.Correo); 
+                    cmd.Parameters.AddWithValue("@a", c.Correo);
                     cmd.Parameters.AddWithValue("@b", c.Contra);
                     cmd.CommandType = CommandType.Text;
-                    r = ((int)cmd.ExecuteScalar() == 0) ? true : false; 
+                    r = ((int)cmd.ExecuteScalar() == 0) ? true : false;
                 }
-            } catch {
+            }
+            catch
+            {
                 r = false;
             }
             return r;
         }
+
+        //public bool  CambiarContra(Usuario entidad,Usuario correo ,Usuario IdUsuario,Usuario Contra)
+        //{
+        //    bool rpta;
+
+        //    try
+        //    {
+        //        var cn = new Conexion();
+
+        //        using (var conexion = new SqlConnection(cn.getCadenaSQL()))
+        //        {
+        //            conexion.Open();
+        //            SqlCommand cmd = new SqlCommand("sp_CambiarContra", conexion);
+        //            cmd.Parameters.AddWithValue("IdUsuario", entidad.IdUsuario);
+        //            cmd.Parameters.AddWithValue("Correo", entidad.Correo);
+        //            cmd.Parameters.AddWithValue("Contra", entidad.Contra);
+        //            cmd.CommandType = CommandType.StoredProcedure;
+        //            cmd.ExecuteNonQuery();
+        //        }
+        //        rpta = true;
+
+
+        //    }
+        //    catch (Exception e)
+        //    {
+
+        //        string error = e.Message;
+        //        rpta = false;
+        //    }
+        //   return rpta; 
+        //} 
+        
+
     }
 }

@@ -1,0 +1,32 @@
+﻿@*@model Usuario
+@{
+    ViewData["Title"] = "CambiarContra";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form asp-action="CambiarContra" asp-controller="MantenedorController1" method="post">
+    
+    <div class="mb-3">
+
+        <div class="mb-3">
+            <label class="form-label">Numero de id</label>
+            <input asp-for="Correo" type="number" class="form-control">
+            <span asp-validation-for="IdUsuario" class="text-bg-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Correo</label>
+            <input asp-for="Correo" type="email" class="form-control">
+            <span asp-validation-for="Correo" class="text-bg-danger"></span>
+        </div>
+
+
+        <label class="form-label">Contraseña</label>
+        <input asp-for="Contra" type="password" class="form-control">
+        <span asp-validation-for="Contra" class="text-bg-danger"></span>
+
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </div>
+</form>
+
+*@
