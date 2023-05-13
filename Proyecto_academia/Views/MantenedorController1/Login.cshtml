@@ -1,0 +1,16 @@
+@model Credencial
+@{
+    ViewData["Title"] = "Inicio de Sesión";
+}
+<h1>Inicio de Sesión</h1>
+<form asp-action="Login" asp-controller="MantenedorController1" method="post">
+    <div>
+        <input asp-for="Correo" type="email" class="form-control">
+    </div>
+    <div>
+        <input asp-for="Contra" type="password" class="form-control">
+    </div>
+    <div>
+        <button type="submit">Iniciar Sesión</button>
+    </div>
+</form>

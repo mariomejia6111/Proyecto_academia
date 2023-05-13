@@ -165,5 +165,22 @@ namespace Datos.Operaciones
                 return ousuarios;
             }
         }
+        public bool VerificarLogin(Credencial c) {
+            bool r;
+            try {
+                var cn = new Conexion();
+                using (var conexion = new SqlConnection(cn.getCadenaSQL())) {
+                    conexion.Open();
+                    SqlCommand cmd = new SqlCommand("SELECT dbo.CheckLogin(@a, @b);", conexion);
+                    cmd.Parameters.AddWithValue("@a", c.Correo); 
+                    cmd.Parameters.AddWithValue("@b", c.Contra);
+                    cmd.CommandType = CommandType.Text;
+                    r = ((int)cmd.ExecuteScalar() == 0) ? true : false; 
+                }
+            } catch {
+                r = false;
+            }
+            return r;
+        }
     }
 }

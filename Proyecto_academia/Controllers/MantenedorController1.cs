@@ -74,7 +74,23 @@ namespace Proyecto_academia.Controllers
             else
                 return View();
         }
-
-
+        // Inicio de Sesión
+        public IActionResult Login() {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Login(Credencial c) {
+            bool r;
+            r = LogicaUsuarios.VerificarLogin(c);
+            if (r) {
+                return RedirectToAction("Listar");
+            } else {
+                return RedirectToAction("Error");
+            }
+        }
+        public IActionResult Error() {
+            return View();
+        }
+        // Fin -- Inicio de Sesión
     }
 }
