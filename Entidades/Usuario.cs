@@ -19,5 +19,8 @@ namespace Entidades
         public string? Contra { get; set; }
         [Required(ErrorMessage = "El Campo Fecha De Creacion Esta Vacio")]
         public DateTime? FechaCreacion { get; set; }
+
+        [Range(1, int.MaxValue, ErrorMessage = "Seleccione un rol")]
+        public int IdRol { get; set; }
     }
 }

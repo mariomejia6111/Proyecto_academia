@@ -165,25 +165,34 @@ namespace Datos.Operaciones
                 return ousuarios;
             }
         }
-        public bool VerificarLogin(Credencial c)
+        public Autenticacion VerificarLogin(Credencial c)
         {
-            bool r;
+            Autenticacion r = new Autenticacion();
             try
             {
                 var cn = new Conexion();
                 using (var conexion = new SqlConnection(cn.getCadenaSQL()))
                 {
                     conexion.Open();
-                    SqlCommand cmd = new SqlCommand("SELECT dbo.CheckLogin(@a, @b);", conexion);
+                    SqlCommand cmd = new SqlCommand("EXEC sp_login @a, @b", conexion);
                     cmd.Parameters.AddWithValue("@a", c.Correo);
                     cmd.Parameters.AddWithValue("@b", c.Contra);
                     cmd.CommandType = CommandType.Text;
-                    r = ((int)cmd.ExecuteScalar() == 0) ? true : false;
+                    //r = ((int)cmd.ExecuteScalar() == 0) ? true : false;
+                    using (var dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            r.Usuario = dr["Correo"].ToString();
+                            r.IdRol = Convert.ToInt32(dr["IdRol"]);
+                            r.Estado = true;
+                        }
+                    }
                 }
             }
             catch
             {
-                r = false;
+                r = new Autenticacion();
             }
             return r;
         }

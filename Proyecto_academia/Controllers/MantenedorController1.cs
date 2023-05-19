@@ -12,6 +12,11 @@ namespace Proyecto_academia.Controllers
         
         public IActionResult Listar()
         {
+            var user = TempData["user"];
+            if (user == null)
+                return RedirectToAction("Login");
+
+
             //La vista mostrara una lista 
             var oLista = LogicaUsuarios.Listar();
 
@@ -84,9 +89,11 @@ namespace Proyecto_academia.Controllers
 
         [HttpPost]
         public IActionResult Login(Credencial c) {
-            bool r;
+            Autenticacion r;
             r = LogicaUsuarios.VerificarLogin(c);
-            if (r) {
+            if (r.Estado) {
+                TempData["user"] = r.Usuario ?? "";
+                TempData["rol"] = r.IdRol;
                 return RedirectToAction("Listar");
             } else {
                 return RedirectToAction("Error");
@@ -101,6 +108,8 @@ namespace Proyecto_academia.Controllers
 
       public IActionResult Logout()
         {
+            TempData["user"] = null;
+            TempData["rol"] = null;
             return RedirectToAction("Login");
         }
 
