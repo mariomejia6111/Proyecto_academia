@@ -1,4 +1,5 @@
 ﻿@model List<Usuario>
+@inject IHttpContextAccessor Accessor
 @{
     ViewData["Title"] = "Listar";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -8,8 +9,9 @@
     <div class="card-header">
         Lista De Contactos
     </div>
-    <h2>User: @TempData["user"]</h2>
-    <h2>Rol: @TempData["rol"]</h2>
+    <h2>User: @ViewBag.User</h2>
+    <h2>Rol: @ViewBag.Rol</h2>
+    <h2>User @Accessor.HttpContext.Session.GetString("User")</h2>
 
     <div class="card-body">
         <a asp-action="Guardar" asp-controller="MantenedorController1" class="btn btn-success">Crear Nuevo</a>
