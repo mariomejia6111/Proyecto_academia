@@ -1,8 +1,218 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+<!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Bootstrap Icons CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/bootstrap-icons.min.css">
+<style>
+    .feedback-card {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .title {
+      font: bold 7rem Helvetica;
+      text-align: center;
+    }
+    .white-text {
+      color: black;
+    }
+    .img-info:hover::after {
+      display: block;
+      width: fit-content;
+      height: 50px;
+      padding: 2px 3px;
+      margin: -50px 0 0 -15px;
+      background-color: black;
+      position: absolute;
+      color: white;
+      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.';
+    }
+  </style>
+  <div class="container mt-5 white-text">
+    <p class="title">Hot Academy</p>
+  </div>
 
-<div class="text-center">
-    <h1 class="display-4">Like this is so much fun to do</h1>
-    <p>Don't you dare touch my code or I'll destroy you</p>
-</div>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-lg-6 mx-auto">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search courses...">
+          <div class="input-group-append">
+            <button class="btn btn-primary" type="button">Search</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section id="information" class="py-5 white-text">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <img src="~/img/academy-presentation-logo.png" class="img-fluid" alt="Information Image">
+        </div>
+        <div class="col-lg-6">
+          <h2>Sobre la Academia</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque lobortis tortor eu massa iaculis, sed
+            dapibus nisl malesuada. Donec dignissim sagittis consectetur. Mauris tincidunt fermentum quam. Duis nec
+            lorem nec mi convallis feugiat.</p> <br>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem nihil quos dolor mollitia repellendus dicta, nesciunt magnam magni distinctio enim ullam. Obcaecati deleniti dicta facilis quis deserunt veritatis velit fuga.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery" class="bg-light py-5">
+    <div class="container">
+      <h2>Un ligero vistazo</h2>
+      <div class="row">
+        <div class="col-lg-4 mb-4 img-info">
+          <img src="~/img/gallery-1.jpg" class="img-fluid" alt="Gallery Image 1">
+        </div>
+        <div class="col-lg-4 mb-4 img-info">
+          <img src="~/img/gallery-2.jpg" class="img-fluid" alt="Gallery Image 2">
+        </div>
+        <div class="col-lg-4 mb-4 img-info">
+          <img src="~/img/gallery-3.jpg" class="img-fluid" alt="Gallery Image 3">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4 mb-4 img-info">
+          <img src="~/img/gallery-4.jpg" class="img-fluid" alt="Gallery Image 4">
+        </div>
+        <div class="col-lg-4 mb-4 img-info">
+          <img src="~/img/gallery-5.jpg" class="img-fluid" alt="Gallery Image 5">
+        </div>
+        <div class="col-lg-4 mb-4 img-info">
+          <img src="~/img/gallery-6.jpg" class="img-fluid" alt="Gallery Image 6">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4 mb-4 img-info">
+          <img src="~/img/gallery-7.jpg" class="img-fluid" alt="Gallery Image 7">
+        </div>
+        <div class="col-lg-4 mb-4 img-info">
+          <img src="~/img/gallery-8.jpg" class="img-fluid" alt="Gallery Image 8">
+        </div>
+        <div class="col-lg-4 mb-4 img-info">
+          <img src="~/img/gallery-9.jpg" class="img-fluid" alt="Gallery Image 9">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="bg-light py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <h2>Sobre Nosotros</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque lobortis tortor eu massa iaculis, sed
+            dapibus nisl malesuada. Donec dignissim sagittis consectetur. Mauris tincidunt fermentum quam. Duis nec
+            lorem nec mi convallis feugiat.</p>
+        </div>
+        <div class="col-lg-6">
+          <img src="~/img/academy-presentation-logo.png" class="img-fluid" alt="About Us Image">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container mt-5">
+    <p style="font: bold 3rem Helvetica; color: white; text-align: center;">Ofrecemos</p>
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="card">
+          <img src="~/img/services-1.png" class="card-img-top" alt="Service 1">
+          <div class="card-body">
+            <h5 class="card-title">Service 1</h5>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque lobortis tortor eu
+              massa
+              iaculis.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card">
+          <img src="~/img/services-1.png" class="card-img-top" alt="Service 2">
+          <div class="card-body">
+            <h5 class="card-title">Service 2</h5>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque lobortis tortor eu
+              massa
+              iaculis.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card">
+          <img src="~/img/services-1.png" class="card-img-top" alt="Service 3">
+          <div class="card-body">
+            <h5 class="card-title">Service 3</h5>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque lobortis tortor eu
+              massa
+              iaculis.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section id="social" class="py-5">
+    <div class="container">
+      <h2 class="white-text">Redes Sociales</h2>
+      <div class="row">
+        <div class="col-lg-4 mb-4">
+          <a href="#" class="btn btn-primary btn-block"><i class="bi bi-facebook"></i> Facebook</a>
+        </div>
+        <div class="col-lg-4 mb-4">
+          <a href="#" class="btn btn-info btn-block"><i class="bi bi-twitter"></i> Twitter</a>
+        </div>
+        <div class="col-lg-4 mb-4">
+          <a href="#" class="btn btn-danger btn-block"><i class="bi bi-youtube"></i> YouTube</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="feedback" class="bg-light py-5">
+    <div class="container">
+      <h2>Comentarios de nuestros alumnos/as</h2>
+      <div class="row">
+        <div class="col-lg-4 mb-4">
+          <div class="card feedback-card">
+            <div class="card-body">
+              <h5 class="card-title">John Doe</h5>
+              <p class="card-text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque lobortis tortor
+                eu massa iaculis."</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 mb-4">
+          <div class="card feedback-card">
+            <div class="card-body">
+              <h5 class="card-title">Jane Smith</h5>
+              <p class="card-text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque lobortis tortor
+                eu massa iaculis."</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 mb-4">
+          <div class="card feedback-card">
+            <div class="card-body">
+              <h5 class="card-title">David Johnson</h5>
+              <p class="card-text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque lobortis tortor
+                eu massa iaculis."</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@("@")popperjs/core@("@")2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
