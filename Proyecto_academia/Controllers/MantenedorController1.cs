@@ -16,10 +16,6 @@ namespace Proyecto_academia.Controllers
             if (user == null)
                 return RedirectToAction("Login");
 
-
-            //La vista mostrara una lista 
-            ViewBag.User = HttpContext.Session.GetString("user");
-            ViewBag.Rol = HttpContext.Session.GetString("rol");
             var oLista = LogicaUsuarios.Listar();
 
             return View(oLista);
@@ -98,13 +94,41 @@ namespace Proyecto_academia.Controllers
             if (r.Estado) {
                 HttpContext.Session.SetString("user", r.Usuario ?? "");
                 HttpContext.Session.SetString("rol", r.IdRol.ToString() ?? "");
-                //TempData["user"] = r.Usuario ?? "";
-                //TempData["rol"] = r.IdRol;
-                return RedirectToAction("Listar");
+
+                String rol = r.IdRol.ToString() ?? "";
+
+                if (rol == "1")
+                    return RedirectToAction("Administrador");
+                else if (rol == "2")
+                    return RedirectToAction("Docente");
+                else if (rol == "3")
+                    return RedirectToAction("Alumno");
+
+                return RedirectToAction("Error");
+                //return RedirectToAction("Listar");
             } else {
                 return RedirectToAction("Error");
             }
         }
+
+        // 1
+        public IActionResult Administrador()
+        {
+            return View();
+        }
+
+        // 2
+        public IActionResult Docente()
+        {
+            return View();
+        }
+
+        // 3
+        public IActionResult Alumno()
+        {
+            return View();
+        }
+
         public IActionResult Error() {
             return View();
         }
@@ -114,7 +138,8 @@ namespace Proyecto_academia.Controllers
 
       public IActionResult Logout()
         {
-            HttpContext.Session.Clear();
+            HttpContext.Session.Remove("user");
+            HttpContext.Session.Remove("rol");
             return RedirectToAction("Login");
         }
 

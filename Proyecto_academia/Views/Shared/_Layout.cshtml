@@ -1,4 +1,4 @@
-﻿
+﻿@using Microsoft.AspNetCore.Http;
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,15 +24,28 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
+                        @if (Context.Request.HttpContext.Session.GetString("rol") == "1")
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="MantenedorController1" asp-action="Listar">Usuarios</a>
+                            </li>
+                        }
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="MantenedorController1" asp-action="Login">Iniciar Sesión</a>
-                        </li>
+                        @if (Context.Request.HttpContext.Session.GetString("user") == null)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="MantenedorController1" asp-action="Login">Iniciar Sesión</a>
+                            </li>
+                        }
                     </ul>
                 </div>
-                <a asp-action="Logout" asp-controller="MantenedorController1" class="my-2 my-sm-0 text-dark"><ins>Cerrar Sesion</ins></a>
+                @if (Context.Request.HttpContext.Session.GetString("user") != null)
+                {
+                    <a asp-action="Logout" asp-controller="MantenedorController1" class="my-2 my-sm-0 text-dark"><ins>Cerrar Sesion</ins></a>
+                }
+                
             </div>
            
         </nav>
