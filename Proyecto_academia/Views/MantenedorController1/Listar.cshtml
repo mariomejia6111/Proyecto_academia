@@ -7,6 +7,13 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 
 }
+<style>
+  
+
+</style>
+
+<div class="containerr">
+
 
 <div class="card">
     <div class="card-header">
@@ -22,10 +29,11 @@
         <table class="table table-bordered">
             <thead>
                 <th>IdUsuario</th>
-                <th>Correo</th>
                 <th>Nombre</th>
+                <th>Correo</th>
                 <th>Contra</th>
                 <th>Fecha_Creacion</th>
+                <th>Rol Usuario</th>
             </thead>
             <tbody>
                 @foreach (var Item in Model)
@@ -36,6 +44,7 @@
                         <td>@Item.Correo</td>
                         <td>****</td>
                         <td>@Item.FechaCreacion</td>
+                        <td>@Item.Rol.RolName</td>
                         <td>
                             <a asp-action="Editar" asp-controller="MantenedorController1" class="btn btn-primary btn-sm" asp-route-IdUsuario="@Item.IdUsuario">Editar</a>
                             <a asp-action="Eliminar" asp-controller="MantenedorController1" class="btn btn-secondary btn-sm" asp-route-IdUsuario="@Item.IdUsuario">Eliminar</a>

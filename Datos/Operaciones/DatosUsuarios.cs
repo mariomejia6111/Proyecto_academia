@@ -81,6 +81,8 @@ namespace Datos.Operaciones
             {
                 var cn = new Conexion();
 
+                entidad.FechaCreacion = DateTime.Now;
+
                 using (var conexion = new SqlConnection(cn.getCadenaSQL()))
                 {
                     conexion.Open();
@@ -89,6 +91,7 @@ namespace Datos.Operaciones
                     cmd.Parameters.AddWithValue("NombreUsuario", entidad.Nombre_User);
                     cmd.Parameters.AddWithValue("Contra", entidad.Contra);
                     cmd.Parameters.AddWithValue("FechaCreacion", entidad.FechaCreacion);
+                    cmd.Parameters.AddWithValue("idrol", entidad.IdRol);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.ExecuteNonQuery();
                 }
@@ -129,7 +132,8 @@ namespace Datos.Operaciones
                             Correo = dr["Correo"].ToString(),
                             Nombre_User = dr["NombreUsuario"].ToString(),
                             Contra = dr["Contra"].ToString(),
-                            FechaCreacion = Convert.ToDateTime(dr["FechaCreacion"])
+                            FechaCreacion = Convert.ToDateTime(dr["FechaCreacion"]),
+                            Rol = new Rol() { RolName = dr["Rol"].ToString() }
                         });
 
                     }

@@ -17,10 +17,11 @@ namespace Entidades
         public string? Nombre_User { get; set; }
         [Required(ErrorMessage = "El Campo Contaseña Esta Vacio")]
         public string? Contra { get; set; }
-        [Required(ErrorMessage = "El Campo Fecha De Creacion Esta Vacio")]
         public DateTime? FechaCreacion { get; set; }
 
         [Range(1, int.MaxValue, ErrorMessage = "Seleccione un rol")]
-        public int IdRol { get; set; }
+        public int? IdRol { get; set; }
+
+         public Rol? Rol { get; set; }
     }
 }

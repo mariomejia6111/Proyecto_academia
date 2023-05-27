@@ -8,10 +8,10 @@ namespace Entidades
 {
     public class Rol
     {
-        public int IdRol { get; set; }
+        public int? IdRol { get; set; }
 
-        public String RolName { get; set; }
+        public String? RolName { get; set; }
 
-        public short Activo { get; set; }
+        public short? Activo { get; set; }
     }
 }

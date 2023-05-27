@@ -29,9 +29,13 @@
             </div>
 
             <div class="mb-3">
-                <label class="form-label">Fecha De Creacion</label>
-                <input asp-for="FechaCreacion" type="date" class="form-control">
-                <span asp-validation-for="FechaCreacion" class="text-bg-danger"></span>
+                <label class="form-label">IdRol</label>
+                <select asp-for="IdRol" class="form-control">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+                <span asp-validation-for="IdRol" class="text-bg-danger"></span>
             </div>
 
             <button type="submit" class="btn btn-primary">Guardar</button>

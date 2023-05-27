@@ -107,7 +107,8 @@ namespace Proyecto_academia.Controllers
                 return RedirectToAction("Error");
                 //return RedirectToAction("Listar");
             } else {
-                return RedirectToAction("Error");
+                ModelState.AddModelError("", "Correo o contraseñea invalido");
+                return View();
             }
         }
 
