@@ -3,18 +3,184 @@
     ViewData["Title"] = "Inicio de Sesión";
 }
 
+<style>
+    /**{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+        body{
+            background: #fbf3ff;
+        }*/
+    .containerr {
+        position: absolute;
+        max-width: 800px;
+        height: 500px;
+        margin: auto;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
 
-<h1>Inicio de Sesión</h1>
-<form asp-action="Login" asp-controller="MantenedorController1" method="post">
-    <div>
-        <input asp-for="Correo" type="email" class="form-control">
-    </div>
-    <div>
-        <input asp-for="Contra" type="password" class="form-control">
-    </div>
-    <div>
-        <button type="submit">Iniciar Sesión</button>
-        <a asp-action="CambiarContra" asp-controller="MantenedorController1" class="my-2 my-sm-0 text-dark"><ins>Cambiar Contraseña</ins></a>
-    </div>
+    .right {
+        position: relative;
+        background-image: linear-gradient(45deg, #000046, #1cb5e0);
+        border-radius: 25px;
+        height: 100%;
+        padding: 25px;
+        color: rgb(192, 192, 192);
+        font-size: 12px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .left {
+        position: relative;
+        background: #fff;
+        border-radius: 25px;
+        height: 100%;
+        padding: 25px;
+        padding-left: 50px;
+    }
+
+        .left header {
+            color: #000046;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+    .row {
+        height: 100%;
+    }
+
+    .mycard {
+        position: relative;
+        background: #fff;
+        height: 100%;
+        border-radius: 25px;
+        -webkit-box-shadow: 0px 10px 40px -10px rgba(0, 0, 0, 0.7);
+        -moz-box-shadow: 0px 10px 40px -10px rgba(0, 0, 0, 0.7);
+        box-shadow: 0px 10px 40px -10px rgba(0, 0, 0, 0.7);
+    }
+
+    .right header {
+        color: #fff;
+        font-size: 44px;
+    }
+
+    .box {
+        position: relative;
+        margin: 20px;
+        margin-bottom: 100px;
+    }
+
+    .left .myinput {
+        width: 280px;
+        border-radius: 25px;
+        padding: 10px;
+        /*padding-left:50px;*/
+        border: none;
+        -webkit-box-shadow: 0px 10px 49px -14px rgba(0, 0, 0, 0.7);
+        -moz-box-shadow: 0px 10px 49px -14px rgba(0, 0, 0, 0.7);
+        box-shadow: 0px 10px 49px -14px rgba(0, 0, 0, 0.7);
+    }
+
+        .left .myinput:focus {
+            outline: none;
+        }
+
+    .myform {
+        position: relative;
+        margin-top: 50px;
+    }
+
+    .left .butt {
+        background: linear-gradient(45deg, #000046, #1cb5e0);
+        color: #fff;
+        width: 200px;
+        border: none;
+        border-radius: 25px;
+        padding: 10px;
+        -webkit-box-shadow: 0px 10px 41px -11px rgba(0, 0, 0, 0.7);
+        -moz-box-shadow: 0px 10px 41px -11px rgba(0, 0, 0, 0.7);
+        box-shadow: 0px 10px 41px -11px rgba(0, 0, 0, 0.7);
+    }
+
+        .left .butt:hover {
+            background: linear-gradient(45deg, #1cb5e0, #000046 );
+        }
+
+        .left .butt:focus {
+            outline: none;
+        }
+
+    /* .left .fas{
+            position:relative;
+            color: #bb36fd;
+            left: 36px;
+        }*/
+
+    .butt_out {
+        background: transparent;
+        color: #fff;
+        width: 200px;
+        border: 2px solid #fff;
+        border-radius: 25px;
+        padding: 10px;
+        text-align: center;
+        -webkit-box-shadow: 0px 10px 49px -14px rgba(0, 0, 0, 0.7);
+        -moz-box-shadow: 0px 10px 49px -14px rgba(0, 0, 0, 0.7);
+        box-shadow: 0px 10px 49px -14px rgba(0, 0, 0, 0.7);
+    }
+
+        .butt_out:hover {
+            border: 2px solid #56CCF2;
+        }
+
+        .butt_out:focus {
+            outline: none;
+        }
+</style>
+
+<div class="containerr">
+    <div class="mycard">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="left">
+                    <form asp-action="Login" asp-controller="MantenedorController1" method="post"  class="myform text-center">
+                        <header>Iniciar Sesion</header>
+                            <div class="form-group">
+
+                            <input asp-for="Correo" type="email" class="myinput mt-3 mb-3" placeholder="Correo Electronico" required />
+                                    <div class="invalid-feedback">Es requerido este campo</div>
+                             </div>
+   
+                            <div class="form-group">
+                            <input asp-for="Contra" type="password" class="myinput mt-3 mb-3" placeholder="Contraseña" required>
+                            </div>
+                            
+                            <div>
+                            <button type="submit" class="butt mt-3 mb-3 text-center">Iniciar Sesión</button>
+                            </div>
     
-</form>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="right">
+                    <div class="box">
+                        <header>Bienvenido</header>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer aliquam ligula in tellus volutpat, et consequat
+                            sapien euismod. Nam ultricies dapibus consequat.
+                        </p>
+                        <input asp-action="CambiarContra" asp-controller="MantenedorController1" type="button" class="butt_out my-2 my-sm-0  " value="Cambiar Contraseña">                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
