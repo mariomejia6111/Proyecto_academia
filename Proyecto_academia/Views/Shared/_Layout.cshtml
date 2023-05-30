@@ -44,6 +44,12 @@
                             </li>
                     
                         }
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Curso" asp-action="Guardar">Nuevo Curso</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Curso" asp-action="Cursos">Ver Cursos</a>
+                        </li>
                     </ul>
                 </div>
                 @if (Context.Request.HttpContext.Session.GetString("user") != null)

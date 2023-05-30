@@ -1,0 +1,59 @@
+@model Curso
+@{
+    ViewData["Title"] = "Editando Curso";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="card">
+    <div class="card-header">
+        <h1>Editando Curso</h1>
+    </div>
+    <div class="card-body">
+        <form asp-action="Editar" asp-controller="Curso" method="post">
+            <div class="mb-3">
+                <label class="form-label">Clave del Curso</label>
+                <input asp-for="IdCurso" type="number" class="form-control" placeholder="0000" value="@Html.DisplayTextFor(m => m.IdCurso)">
+                <span asp-validation-for="IdCurso" class="text-bg-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Nombre del Curso</label>
+                <input asp-for="NombreCurso" type="text" class="form-control" placeholder="Ejemplo" value="@Html.DisplayTextFor(m => m.NombreCurso)">
+                <span asp-validation-for="NombreCurso" class="text-bg-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Descripción</label>
+                <textarea asp-for="DescripcionCurso" class="form-control" placeholder="Ingrese la descripción aquí">@Model.DescripcionCurso</textarea>
+                <span asp-validation-for="DescripcionCurso" class="text-bg-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Duración del Curso</label>
+                <input asp-for="DuracionCurso" type="number" class="form-control" placeholder="0" value="@Model.DuracionCurso">
+                <span asp-validation-for="DuracionCurso" class="text-bg-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Descripción de la Duración</label>
+                <select class="form-select-sm" asp-for="DescripcionDuracion">
+                    <option value="Horas" selected>Horas</option> <option value="Días">Días</option> <option value="Semanas">Semanas</option> <option value="Meses">Meses</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Nivel del Curso</label>
+                <select class="form-select-sm" asp-for="NivelCurso">
+                    <option value="Básico" selected>Básico</option> <option value="Intermedio">Intermedio</option> <option value="Avanzado">Avanzado</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Requisitos Previos</label>
+                <select class="form-select-sm" asp-for="RequisitosPrevios">
+                    <option value="Ninguno" selected>Ninguno</option> <option value="Básico">Básico</option>  <option value="Intermedio">Intermedio</option><option value="Avanzado">Avanzado</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Precio del Curso</label>
+                <input asp-for="Precio" type="number" class="form-control" placeholder="$0.00" value="@Model.Precio">
+                <span asp-validation-for="Precio" class="text-bg-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Editar Curso</button>
+            <a asp-action="Cursos" asp-controller="Curso" class="btn btn-warning">Ver Cursos</a>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,48 @@
+@model List<Curso>
+@{
+    ViewData["Title"] = "Lista de Cursos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="card">
+    <div class="card-header">
+        Lista de Cursos
+    </div>
+    <div class="card-body">
+        <a asp-action="Guardar" asp-controller="Curso" class="btn btn-success">Crear Nuevo</a>
+        <hr />
+        @if (Model.Count > 0) {
+            <table class="table table-bordered">
+                <thead>
+                    <th>Nombre del Curso</th>
+                    <th>Descripción del Curso</th>
+                    <th>Duración del Curso</th>
+                    <th>Descripción de la Duración</th>
+                    <th>Nivel del Curso</th>
+                    <th>Requisitos Previos</th>
+                    <th>Precio</th>
+                    <th>Acciones Disponibles</th>
+                </thead>
+                <tbody>
+                    @foreach (var Item in Model)
+                    {
+                        <tr>
+                            <td>@Item.NombreCurso</td>
+                            <td>@Item.DescripcionCurso</td>
+                            <td>@Item.DuracionCurso</td>
+                            <td>@Item.DescripcionDuracion</td>
+                            <td>@Item.NivelCurso</td>
+                            <td>@Item.RequisitosPrevios</td>
+                            <td>$@Item.Precio</td>
+                            <td>
+                                <a asp-action="Editar" asp-controller="Curso" class="btn btn-primary btn-sm" asp-route-IdUsuario="@Item.IdCurso">Editar Curso</a>
+                                <a asp-action="Eliminar" asp-controller="Curso" class="btn btn-secondary btn-sm" asp-route-IdUsuario="@Item.IdCurso">Eliminar Curso</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        } else {
+            <h1>Todavía no se ingresa cursos...</h1>
+        }
+    </div>
+</div>
