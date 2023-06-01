@@ -20,6 +20,8 @@ namespace Proyecto_academia.Controllers {
             var a = LogicaCursos.Guardar(curso);
             if (a) return RedirectToAction("Cursos");
             else return View();
+
+
         }
         public IActionResult Editar(int id) {
             var curso = LogicaCursos.Obtener(id);
@@ -31,9 +33,11 @@ namespace Proyecto_academia.Controllers {
                 return View();
             var _curso = LogicaCursos.Editar(curso);
             if (_curso) 
-                return RedirectToAction("Cursos");
+                return RedirectToAction("Curso");
             else 
                 return View();
+
+           
         }
         public IActionResult Eliminar(int id) {
             var curso = LogicaCursos.Obtener(id);

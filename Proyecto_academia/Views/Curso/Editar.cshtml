@@ -11,22 +11,22 @@
         <form asp-action="Editar" asp-controller="Curso" method="post">
             <div class="mb-3">
                 <label class="form-label">Clave del Curso</label>
-                <input asp-for="IdCurso" type="number" class="form-control" placeholder="0000" value="@Html.DisplayTextFor(m => m.IdCurso)">
+                <input asp-for="IdCurso" type="number" class="form-control"  value="@Html.DisplayTextFor(m => m.IdCurso)">
                 <span asp-validation-for="IdCurso" class="text-bg-danger"></span>
             </div>
             <div class="mb-3">
                 <label class="form-label">Nombre del Curso</label>
-                <input asp-for="NombreCurso" type="text" class="form-control" placeholder="Ejemplo" value="@Html.DisplayTextFor(m => m.NombreCurso)">
+                <input asp-for="NombreCurso" type="text" class="form-control"  value="@Html.DisplayTextFor(m => m.NombreCurso)">
                 <span asp-validation-for="NombreCurso" class="text-bg-danger"></span>
             </div>
             <div class="mb-3">
                 <label class="form-label">Descripción</label>
-                <textarea asp-for="DescripcionCurso" class="form-control" placeholder="Ingrese la descripción aquí">@Model.DescripcionCurso</textarea>
+                <textarea asp-for="DescripcionCurso" class="form-control" >@Model.DescripcionCurso</textarea>
                 <span asp-validation-for="DescripcionCurso" class="text-bg-danger"></span>
             </div>
             <div class="mb-3">
                 <label class="form-label">Duración del Curso</label>
-                <input asp-for="DuracionCurso" type="number" class="form-control" placeholder="0" value="@Model.DuracionCurso">
+                <input asp-for="DuracionCurso" type="number" class="form-control"  value="@Model.DuracionCurso">
                 <span asp-validation-for="DuracionCurso" class="text-bg-danger"></span>
             </div>
             <div class="mb-3">

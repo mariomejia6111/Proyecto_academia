@@ -32,7 +32,70 @@
       color: white;
       content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.';
     }
+    body {
+        overflow-x: hidden;
+    }
+/*hero*/
+#hero {
+  width: 100vw;
+  height: 100vh;
+  transform: translateX(-290px) translateY(-20px);
+  background: royalblue;
+}
+
+#hero h1 {
+  margin: 0 0 10px 0;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 56px;
+  color: #fff;
+}
+
+#hero h2 {
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 50px;
+  font-size: 24px;
+}
+
+#hero .btn-mas {
+  font-family: "Jost", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 10px 28px 11px 28px;
+  border-radius: 50px;
+  transition: 0.5s;
+  margin: 10px 0 0 0;
+  color: #fff;
+  background: #47b2e4;
+}
+
+#hero .btn-mas:hover {
+  background: #209dd8;
+}
+#hero .animated {
+  animation: up-down 2s ease-in-out infinite alternate-reverse both;
+}
+
   </style>
+  
+  <section id="hero" class="">
+        <div class="container">
+        <div class="row" style="transform: translateY(40%);">
+            <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
+                <h1>Fomentando el crecimiento personal y desarrollo de habilidades</h1>
+                <h2> Facilitar el proceso de aprendizaje para todas las personas</h2>
+                    <div class="d-flex justify-content-center justify-content-lg-start">
+                    <a href="~/" class="btn-mas scrollto">Más información</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="~/img/hero-img.png" class="img-fluid animated" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
   <div class="container mt-5 white-text">
     <p class="title">Master Computing Academy</p>
   </div>
@@ -70,7 +133,7 @@
       <h2>Un ligero vistazo</h2>
       <div class="row">
         <div class="col-lg-4 mb-4 img-info">
-          <img src="~/img/gallery-1.jpg" class="img-fluid" alt="Gallery Image 1">
+          <img src="~/img/BDD.png" class="img-fluid" alt="Gallery Image 1">
         </div>
         <div class="col-lg-4 mb-4 img-info">
           <img src="~/img/gallery-2.jpg" class="img-fluid" alt="Gallery Image 2">

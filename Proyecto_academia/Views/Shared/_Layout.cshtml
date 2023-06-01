@@ -52,9 +52,16 @@
                         </li>
                     </ul>
                 </div>
+                <style> .login-li { list-style: none; } #user-name::before { position: absolute; transform: translateX(-25px); content: '👤'; } </style>
                 @if (Context.Request.HttpContext.Session.GetString("user") != null)
                 {
-                    <a asp-action="Logout" asp-controller="MantenedorController1" class="my-2 my-sm-0 text-dark"><ins>Cerrar Sesion</ins></a>
+                    <li class="nav-item login-li" id="user-name" style="transform: translateX(-75px);">
+                        <a class="nav-link text-black mr-4">    Hola:@Context.Request.HttpContext.Session.GetString("user")</a>
+                    </li>
+                    <li class="nav-item login-li" style="transform: translateX(-30px);">                                          
+                        <a asp-action="Logout" asp-controller="MantenedorController1" class="my-2 my-sm-0 text-dark ml-5"><ins>Cerrar Sesion</ins></a>
+                    </li>
+                    
                 }
                 
             </div>
