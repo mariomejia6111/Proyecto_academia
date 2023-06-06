@@ -148,5 +148,66 @@ namespace Datos.Operaciones
                 return curso;
             }
         }
+        public List<Curso> CursosDocentes(string a)
+        {
+            List<Curso> cursos = new List<Curso>(); 
+            var cn = new Conexion();
+            using (var conn = new SqlConnection(cn.getCadenaSQL()))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("SP_CursosDocentes", conn);
+                cmd.Parameters.AddWithValue("@a", a);
+                cmd.CommandType = CommandType.StoredProcedure;
+                using (var dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        cursos.Add(new Curso()
+                        {
+                            NombreCurso = dr.GetString(0),
+                            DescripcionCurso = dr.GetString(1),
+                            DuracionCurso = dr.GetInt32(2),
+                            DescripcionDuracion = dr.GetString(3),
+                            NivelCurso = dr.GetString(4),
+                            RequisitosPrevios = dr.GetString(5)
+                        });
+                    }
+                }
+            }
+            return cursos;
+        }
+        public Dictionary<int, string> DocentesCursos(string sp) {
+            var datos = new Dictionary<int, string>();
+            var cn = new Conexion();
+            using (var conn = new SqlConnection(cn.getCadenaSQL())) {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand($"SP_{sp}", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                using (var r = cmd.ExecuteReader()) {
+                    while (r.Read()) {
+                        datos.Add(r.GetInt32(0), r.GetString(1));
+                    }
+                }
+            }
+            return datos;
+        }
+        public bool RelacionarCurso(int a, int b) {
+            bool r;
+            try {
+                var cn = new Conexion();
+                using (var conn = new SqlConnection(cn.getCadenaSQL())) {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("SP_RelacionarCurso", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@a", a);
+                    cmd.Parameters.AddWithValue("@b", b);
+                    cmd.ExecuteNonQuery();
+                }
+                r = true;
+            } catch {
+                r = false;
+            }
+            return r;
+        }
     }
 }

@@ -100,7 +100,7 @@ namespace Proyecto_academia.Controllers
                 if (rol == "1")
                     return RedirectToAction("Administrador");
                 else if (rol == "2")
-                    return RedirectToAction("Docente");
+                    return RedirectToAction("Docente", new { a = r.Usuario } );
                 else if (rol == "3")
                     return RedirectToAction("Alumno");
 
@@ -119,8 +119,9 @@ namespace Proyecto_academia.Controllers
         }
 
         // 2
-        public IActionResult Docente()
+        public IActionResult Docente(string a)
         {
+            ViewBag.Cursos = LogicaCursos.CursosDocentes(a);
             return View();
         }
 

@@ -1,0 +1,59 @@
+@{
+    ViewData["Title"] = "Registrando Docente a Curso";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    #no-data {
+        text-align: center; width: fit-content; padding: 7px;
+        font: bold 1.2rem Helvetica; border: 0px 3px 5px black; 
+        background-image: linear-gradient(125deg, rgb(255, 56, 95), rgb(255, 46, 88), rgb(211, 1, 43)); border-radius: 10px;
+    }
+    #response_msg {
+        position: absolute; right: 10px; bottom: 10px; padding: 5px 7px;
+        border-radius: 10px; font: bold 1.2rem Helvetica;
+        background-image: linear-gradient(125deg, rgb(114, 204, 114), rgb(62, 160, 62), rgb(21, 179, 21));
+    }
+</style>
+<h1>Registrar Docente a un Curso</h1>
+@{
+    if (ViewBag.Respuesta != null) {
+        string y = String.Empty;
+        if (ViewBag.Respuesta) {
+            y = "Se ha registrado el docente con el curso";
+        } else {
+            y = "No se pudo registrar el docente con el curso...";
+        }
+        <h1 id="response_msg">@y</h1>
+    }
+}
+@if (ViewBag.Docentes.Count == 0 || ViewBag.Materias.Count == 0) {
+    <p id="no-data">No se encontró datos suficientes para relacionar...</p>
+} else {
+    <div class="card-body">
+        <form asp-action="DocenteCurso" asp-controller="Curso" method="post">
+            <div class="mb-3">
+                <label class="form-label">Materias sin Docente:</label>
+                <select name="a" class="form-select-sm">
+                    @foreach (var materia in ViewBag.Materias) {
+                        <option value="@materia.Key">@materia.Value</option>
+                    }
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Docentes Disponibles:</label>
+                <select name="b" class="form-select-sm">
+                    @foreach (var docente in ViewBag.Docentes) {
+                        <option value="@docente.Key">@docente.Value</option>
+                    }
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Registrar Cambios</button>
+            <a asp-action="Cursos" asp-controller="Curso" class="btn btn-success">Volver a Cursos</a>
+        </form>
+    </div>
+}
+<script>
+    setTimeout(() => {
+        document.getElementById('response_msg').remove()
+    }, 5000)
+</script>

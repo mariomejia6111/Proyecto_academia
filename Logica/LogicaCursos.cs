@@ -15,5 +15,8 @@ namespace Logica
         public static bool Guardar(Curso curso) => _CursosDatos.Guardar(curso);
         public static bool Editar(Curso curso) => _CursosDatos.Editar(curso);
         public static bool Eliminar(int id) => _CursosDatos.Eliminar(id);
+        public static List<Curso> CursosDocentes(string a) => _CursosDatos.CursosDocentes(a);
+        public static Dictionary<int, string> DocentesCursos(string sp) => _CursosDatos.DocentesCursos(sp);
+        public static bool RelacionarCurso(int a, int b) => _CursosDatos.RelacionarCurso(a, b);
     }
 }

@@ -51,5 +51,17 @@ namespace Proyecto_academia.Controllers {
             else 
                 return View();
         }
+        public IActionResult DocenteCurso() {
+            ViewBag.Docentes = LogicaCursos.DocentesCursos("Docentes");
+            ViewBag.Materias = LogicaCursos.DocentesCursos("MateriasDisponibles");
+            return View();
+        }
+        [HttpPost]
+        public IActionResult DocenteCurso(int a, int b) {
+            ViewBag.Docentes = LogicaCursos.DocentesCursos("Docentes");
+            ViewBag.Materias = LogicaCursos.DocentesCursos("MateriasDisponibles");
+            ViewBag.Respuesta = LogicaCursos.RelacionarCurso(a, b);
+            return View();
+        }
     }
 }

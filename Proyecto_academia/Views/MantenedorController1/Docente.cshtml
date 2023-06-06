@@ -1,7 +1,57 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
 }
+<style>
+    .grupo-tarjetas {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
 
-<h1>Docente</h1>
+    .tarjeta {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        width: 500px;
+        background-color: #f2f2f2;
+        border-radius: 5px;
+        padding: 20px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        margin: 20px;
+    }
+
+    .titulo {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .contenido {
+        font-size: 18px;
+    }
+</style>
+<h1>Docente</h1> <br/> <br/>
+<h2>Mis Cursos</h2>
+@if (ViewBag.Cursos.Count == 0) {
+    <h2 style="margin: 50px 50px;">No se encontraron cursos <br>Tal vez no se ha asignado alguno aún</h2>
+} else {
+    <div class="grupo-tarjetas">
+        @{ Random rnd = new Random(); }
+        @for (int y = 0; y < ViewBag.Cursos.Count; y++) {
+            <div class="tarjeta">
+                <div>
+                    @{ string picName = $"{rnd.Next(1, 6)}.png"; }
+                    <img width="150" height="150" src="~/img/course-@picName"/>
+                </div>
+                <div>
+                    <div class="titulo">@ViewBag.Cursos[y].NombreCurso</div>
+                    <div class="contenido">
+                        <strong>Descripcion:</strong> @ViewBag.Cursos[y].DescripcionCurso <br>
+                        <strong>Duracion:</strong> @ViewBag.Cursos[y].DuracionCurso @ViewBag.Cursos[y].DescripcionDuracion <br>
+                        <strong>Nivel del Curso:</strong> @ViewBag.Cursos[y].NivelCurso <br>
+                        <strong>Requisitos Previos del Curso:</strong> @ViewBag.Cursos[y].RequisitosPrevios
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
