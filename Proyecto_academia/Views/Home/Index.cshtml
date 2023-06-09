@@ -36,13 +36,6 @@
         overflow-x: hidden;
     }
 /*hero*/
-#hero {
-  width: 100vw;
-  height: 100vh;
-  transform: translateX(-290px) translateY(-20px);
-  background: royalblue;
-}
-
 #hero h1 {
   margin: 0 0 10px 0;
   font-size: 48px;
@@ -78,8 +71,8 @@
   animation: up-down 2s ease-in-out infinite alternate-reverse both;
 }
   </style>
-  
-  <section id="hero" class="">
+
+<section id="hero" style="width: 100%; height: 100vh; background-color: #2e4a99;" class="">
         <div class="container">
         <div class="row" style="transform: translateY(40%);">
             <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
@@ -237,7 +230,7 @@
     </div>
   </section>
 
-  <section id="feedback" class="bg-light py-5">
+  <section id="feedback" class="bg-light py-5" style="margin-bottom: 100px;">
     <div class="container">
       <h2>Comentarios de nuestros alumnos/as</h2>
       <div class="row">

@@ -29,10 +29,19 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="MantenedorController1" asp-action="Listar">Usuarios</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Curso" asp-action="Guardar">Nuevo Curso</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Curso" asp-action="Cursos">Ver Cursos</a>
+                            </li>
                         }
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
+                        @if (Context.Request.HttpContext.Session.GetString("rol") == "2")
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="MantenedorController1" asp-action="Docente" asp-route-a="@Context.Request.HttpContext.Session.GetString("user")">Mis Cursos</a>
+                            </li>
+                        }
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Nosotros">Nosotros</a>
                         </li>
@@ -44,19 +53,13 @@
                             </li>
                     
                         }
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Curso" asp-action="Guardar">Nuevo Curso</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Curso" asp-action="Cursos">Ver Cursos</a>
-                        </li>
                     </ul>
                 </div>
                 <style> .login-li { list-style: none; } #user-name::before { position: absolute; transform: translateX(-25px); content: '👤'; } </style>
                 @if (Context.Request.HttpContext.Session.GetString("user") != null)
                 {
                     <li class="nav-item login-li" id="user-name" style="transform: translateX(-75px);">
-                        <a class="nav-link text-black mr-4">    Hola:@Context.Request.HttpContext.Session.GetString("user")</a>
+                        <a class="nav-link text-black mr-4">    Hola: @Context.Request.HttpContext.Session.GetString("user")</a>
                     </li>
                     <li class="nav-item login-li" style="transform: translateX(-30px);">                                          
                         <a asp-action="Logout" asp-controller="MantenedorController1" class="my-2 my-sm-0 text-dark ml-5"><ins>Cerrar Sesion</ins></a>

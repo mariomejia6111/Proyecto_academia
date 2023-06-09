@@ -8,23 +8,21 @@
 
 }
 <style>
-  
-
+  tr:nth-child(odd) td {
+        background-color: #bdbebf;
+  }
 </style>
 
-<div class="containerr">
+<div class="container" style="margin-bottom: 100px;">
 
 
 <div class="card">
     <div class="card-header">
-        Lista De Contactos
+            <p style="font: bold 2rem Arial; text-shadow: 0px 3px 5px black;">Lista De Usuarios</p>
     </div>
 
-    <h2>User @Context.Request.HttpContext.Session.GetString("user")</h2>
-    <h2>Rol: @Context.Request.HttpContext.Session.GetString("rol")</h2>
-
     <div class="card-body">
-        <a asp-action="Guardar" asp-controller="MantenedorController1" class="btn btn-success">Crear Nuevo</a>
+        <a asp-action="Guardar" asp-controller="MantenedorController1" class="btn btn-outline-dark">Nuevo Usuario</a>
         <hr />
         <table class="table table-bordered">
             <thead>
@@ -46,12 +44,10 @@
                         <td>@Item.FechaCreacion</td>
                         <td>@Item.Rol.RolName</td>
                         <td>
-                            <a asp-action="Editar" asp-controller="MantenedorController1" class="btn btn-primary btn-sm" asp-route-IdUsuario="@Item.IdUsuario">Editar</a>
-                            <a asp-action="Eliminar" asp-controller="MantenedorController1" class="btn btn-secondary btn-sm" asp-route-IdUsuario="@Item.IdUsuario">Eliminar</a>
+                            <a asp-action="Editar" asp-controller="MantenedorController1" class="btn btn-dark btn-sm" asp-route-IdUsuario="@Item.IdUsuario">Editar</a>
+                            <a asp-action="Eliminar" asp-controller="MantenedorController1" class="btn btn-outline-dark btn-sm" asp-route-IdUsuario="@Item.IdUsuario">Eliminar</a>
                         </td>
                     </tr>
-                    
-
                 }
             </tbody>
         </table>

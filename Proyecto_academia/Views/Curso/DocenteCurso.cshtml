@@ -14,7 +14,7 @@
         background-image: linear-gradient(125deg, rgb(114, 204, 114), rgb(62, 160, 62), rgb(21, 179, 21));
     }
 </style>
-<h1>Registrar Docente a un Curso</h1>
+<p style="font: bold 2rem Helvetica; text-shadow: 0px 2px 5px black;">Registrar Docente a un Curso</p>
 @{
     if (ViewBag.Respuesta != null) {
         string y = String.Empty;
@@ -33,7 +33,7 @@
         <form asp-action="DocenteCurso" asp-controller="Curso" method="post">
             <div class="mb-3">
                 <label class="form-label">Materias sin Docente:</label>
-                <select name="a" class="form-select-sm">
+                <select name="a" class="form-select w-25">
                     @foreach (var materia in ViewBag.Materias) {
                         <option value="@materia.Key">@materia.Value</option>
                     }
@@ -41,14 +41,14 @@
             </div>
             <div class="mb-3">
                 <label class="form-label">Docentes Disponibles:</label>
-                <select name="b" class="form-select-sm">
+                <select name="b" class="form-select w-25">
                     @foreach (var docente in ViewBag.Docentes) {
                         <option value="@docente.Key">@docente.Value</option>
                     }
                 </select>
             </div>
-            <button type="submit" class="btn btn-primary">Registrar Cambios</button>
-            <a asp-action="Cursos" asp-controller="Curso" class="btn btn-success">Volver a Cursos</a>
+            <button type="submit" class="btn btn-dark">Registrar Cambios</button>
+            <a asp-action="Cursos" asp-controller="Curso" class="btn btn-outline-dark">Volver a Cursos</a>
         </form>
     </div>
 }

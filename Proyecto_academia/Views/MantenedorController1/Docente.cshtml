@@ -29,29 +29,39 @@
         font-size: 18px;
     }
 </style>
-<h1>Docente</h1> <br/> <br/>
-<h2>Mis Cursos</h2>
-@if (ViewBag.Cursos.Count == 0) {
-    <h2 style="margin: 50px 50px;">No se encontraron cursos <br>Tal vez no se ha asignado alguno aún</h2>
-} else {
-    <div class="grupo-tarjetas">
-        @{ Random rnd = new Random(); }
-        @for (int y = 0; y < ViewBag.Cursos.Count; y++) {
-            <div class="tarjeta">
-                <div>
-                    @{ string picName = $"{rnd.Next(1, 6)}.png"; }
-                    <img width="150" height="150" src="~/img/course-@picName"/>
-                </div>
-                <div>
-                    <div class="titulo">@ViewBag.Cursos[y].NombreCurso</div>
-                    <div class="contenido">
-                        <strong>Descripcion:</strong> @ViewBag.Cursos[y].DescripcionCurso <br>
-                        <strong>Duracion:</strong> @ViewBag.Cursos[y].DuracionCurso @ViewBag.Cursos[y].DescripcionDuracion <br>
-                        <strong>Nivel del Curso:</strong> @ViewBag.Cursos[y].NivelCurso <br>
-                        <strong>Requisitos Previos del Curso:</strong> @ViewBag.Cursos[y].RequisitosPrevios
+<div style="margin-bottom: 100px;">
+    <p style="font: bold 2rem Helvetica; text-shadow: 0px 3px 5px black;">Docente</p> <br /> <br />
+    <h2>Mis Cursos</h2>
+    @if (ViewBag.Cursos.Count == 0)
+    {
+        <h2 style="margin: 50px 50px; font-family: Arial;">No se encontraron cursos <br>Tal vez no se ha asignado alguno aún</h2>
+    }
+    else
+    {
+        <div class="grupo-tarjetas">
+            @{
+                Random rnd = new Random();
+            }
+            @for (int y = 0; y < ViewBag.Cursos.Count; y++)
+            {
+                <div class="tarjeta">
+                    <div>
+                        @{
+                            string picName = $"{rnd.Next(1, 6)}.png";
+                        }
+                        <img width="150" height="150" src="~/img/course-@picName" />
+                    </div>
+                    <div>
+                        <div class="titulo">@ViewBag.Cursos[y].NombreCurso</div>
+                        <div class="contenido">
+                            <strong>Descripcion:</strong> @ViewBag.Cursos[y].DescripcionCurso <br>
+                            <strong>Duracion:</strong> @ViewBag.Cursos[y].DuracionCurso @ViewBag.Cursos[y].DescripcionDuracion <br>
+                            <strong>Nivel del Curso:</strong> @ViewBag.Cursos[y].NivelCurso <br>
+                            <strong>Requisitos Previos del Curso:</strong> @ViewBag.Cursos[y].RequisitosPrevios
+                        </div>
                     </div>
                 </div>
-            </div>
-        }
-    </div>
-}
+            }
+        </div>
+    }
+</div>

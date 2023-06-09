@@ -4,9 +4,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="card">
+<div class="card" style="margin-bottom: 100px;">
     <div class="card-header">
-        Crear Usuario
+        <p style="font: bold 2rem Helvetica; text-shadow: 0px 3px 5px black;">Nuevo Usuario</p>
     </div>
     <div class="card-body">
         <form asp-action="Guardar" asp-controller="MantenedorController1" method="post">
@@ -38,8 +38,8 @@
                 <span asp-validation-for="IdRol" class="text-bg-danger"></span>
             </div>
 
-            <button type="submit" class="btn btn-primary">Guardar</button>
-            <a asp-action="Listar" asp-controller="MantenedorController1" class="btn btn-warning">Volver ala lista </a>
+            <button type="submit" class="btn btn-dark">Guardar</button>
+            <a asp-action="Listar" asp-controller="MantenedorController1" class="btn btn-outline-dark">Volver ala lista </a>
         </form>
     </div>
 </div>

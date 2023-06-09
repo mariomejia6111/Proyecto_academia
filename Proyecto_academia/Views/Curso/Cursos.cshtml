@@ -3,13 +3,18 @@
     ViewData["Title"] = "Lista de Cursos";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div class="card">
+<style>
+    tr:nth-child(even) td {
+        background-color: #dedede;
+    }
+</style>
+<div class="card" style="margin-bottom: 150px;">
     <div class="card-header">
-        Lista de Cursos
+        <p style="font: bold 2rem Helvetica; text-shadow: 0px 3px 5px black;">Lista de Cursos</p:>
     </div>
     <div class="card-body">
-        <a asp-action="Guardar" asp-controller="Curso" class="btn btn-success">Nuevo Curso</a>
-        <a asp-action="DocenteCurso" asp-controller="Curso" class="btn btn-success">Registrar Docente a Curso</a>
+        <a asp-action="Guardar" asp-controller="Curso" class="btn btn-secondary">Nuevo Curso</a>
+        <a asp-action="DocenteCurso" asp-controller="Curso" class="btn btn-outline-dark">Registrar Docente a Curso</a>
         <hr />
         @if (Model.Count > 0) {
             <table class="table table-bordered">
@@ -35,8 +40,8 @@
                             <td>@Item.RequisitosPrevios</td>
                             <td>$@Item.Precio</td>
                             <td>
-                                <a asp-action="Editar" asp-controller="Curso" class="btn btn-primary btn-sm" asp-route-IdUsuario="@Item.IdCurso">Editar Curso</a>
-                                <a asp-action="Eliminar" asp-controller="Curso" class="btn btn-secondary btn-sm" asp-route-IdUsuario="@Item.IdCurso">Eliminar Curso</a>
+                                <a asp-action="Editar" asp-controller="Curso" style="width: 100%; margin: 3px 0px;" class="btn btn-dark" asp-route-IdUsuario="@Item.IdCurso">Editar Curso</a>
+                                <a asp-action="Eliminar" asp-controller="Curso" style="width: 100%; margin: 3px 0px;" class="btn btn-outline-dark" asp-route-IdUsuario="@Item.IdCurso">Eliminar Curso</a>
                             </td>
                         </tr>
                     }
